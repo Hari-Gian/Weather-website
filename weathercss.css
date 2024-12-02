@@ -57,3 +57,31 @@ body{
     border-radius: 50%;
     object-fit: cover;
 }
+
+.weather-icon{
+    width: 180px;
+    margin-top: 75px;
+}
+
+.weather h1{
+    font-size: 50px;
+    font-weight: 500;
+}
+.weather h2{
+    font-size: 50px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+
+.details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 50px;
+}
+
+.wind-humidity{
+    display: flex;
+}
+
