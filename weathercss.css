@@ -83,5 +83,23 @@ body{
 
 .wind-humidity{
     display: flex;
+    align-items: center;
+    text-align: left;
 }
 
+.wind-humidity img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.humidity, .wind{
+    font-size: 50px;
+    font-weight: 500;
+    margin-top: -10px;
+}
