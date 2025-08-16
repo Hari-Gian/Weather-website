@@ -8,8 +8,8 @@ body{
 
 }
 .app{
-    width: 90%;
-    max-width: 475px;
+    width: 95%;
+    max-width: 600px;
     background: linear-gradient(135deg, #00feba, #5b548a);
     color: #fff;
     margin: 100px auto 0;
@@ -63,22 +63,18 @@ body{
     margin-top: 75px;
 }
 
-.weather h1{
+.weather h1 {
     font-size: 50px;
-    font-weight: 500;
-}
-.weather h2{
-    font-size: 50px;
-    font-weight: 400;
-    margin-top: -10px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1; 
 }
 
-.details{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    margin-top: 50px;
+.weather h2 {
+    font-size: 35px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1;
 }
 
 .wind-humidity{
@@ -103,3 +99,31 @@ body{
     font-weight: 500;
     margin-top: -10px;
 }
+
+.weather {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 30px; 
+    margin-top: 30px;
+}
+
+.weather-temperatur {
+    gap: 20px;
+    display: flex; 
+    align-items: center; 
+}
+
+.weather img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.humidity-temp, .wind-temp {
+    font-size: 50px;
+    font-weight: 500;
+    margin: 0;
+}
+

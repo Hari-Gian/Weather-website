@@ -10,13 +10,14 @@
   <div class="app">
     <div class="search">
       <input type="text"spellcheck="false" placeholder="Enter your city name here">
-      <button><img src="../frontend/bilderUndSo/clouds.webp" alt="search-img"></button>
+      <button><img src="../frontend/bilderUndSo/clouds.webp" alt="search-img" id="search_city"></button>
     </div>
     <div class="weather">
-       <img src="../frontend/bilderUndSo/rain.png" alt="rain-img" class="weather-icon">
+      <div class="weather-temperatur">
+        <img src="../frontend/bilderUndSo/temperatur.png" alt="temperatur">
         <h1 class="weather-temp">22 °C</h1>
         <h2 class="weather-city">New York</h2>
-        <div class="details">
+      </div>
             <div class="wind-humidity">
                 <img src="../frontend/bilderUndSo/humidity.png" alt="humidity-img">
                 <div>
@@ -31,9 +32,54 @@
                     <p>wind speed </p>
                 </div>
             </div>
+        <div class="chance-rain">
+          <div>
+            <img src="../frontend/bilderUndSo/rain.png" alt="rain-img" class="weather-icon">
+            <p>20%</p>
+            <p>chance of rain</p>
+          </div>
         </div>
     </div>
   </div>
+
+  <script>
+
+    const apiURL = "http://127.0.0.1:5000/weather?city="
+
+    document.getElementById("search_city").addEventListener("click", async () => {
+      const city = document.querySelector(".search input").value;
+
+       try {
+      const response = await fetch(apiURL + encodeURIComponent(city));
+      const data = await response.json();
+
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
+
+      const chanceOfRain = data.rain ? "100%" : "0%";
+
+  // Wetter-Daten in DOM einsetzen
+  document.querySelector(".weather-city").textContent = data.name;
+  document.querySelector(".weather-temp").textContent = `${Math.round(data.main.temp)} °C`;
+  document.querySelector(".humidity-temp").textContent = `${Math.round(data.main.humidity)}%`;
+  document.querySelector(".wind-temp").textContent = `${Math.round(data.wind.speed)} km/h`;
+  document.querySelector(".chance-rain p").textContent = chanceOfRain;
+
+  // Sonne oder Regen anzeigen
+  if (data.rain) {
+    document.querySelector(".weather-icon").src = "../frontend/bilderUndSo/rain.png";
+  }   else {
+      document.querySelector(".weather-icon").src = "../frontend/bilderUndSo/sonne.png";
+  }
+
+
+    } catch (err) {
+      console.error("Fehler beim Laden:", err);
+    }
+  });
+</script>
 
 </body>
 </html>
